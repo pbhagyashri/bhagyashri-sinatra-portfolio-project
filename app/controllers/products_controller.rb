@@ -5,11 +5,13 @@ class ProductsController < ApplicationController
   end
 
   get '/products/new' do
+
     erb :'/products/new'
   end
 
   post '/products' do
-    binding.pry
+
+    @product = Product.find_or_create_by(params[:user][:product])
     redirect to '/products'
   end
 

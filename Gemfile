@@ -11,6 +11,7 @@ gem 'rake'
 gem 'sinatra-activerecord'
 gem 'require_all'
 gem 'bcrypt'
+gem 'rack'
 
 
 group :development do

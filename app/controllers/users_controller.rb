@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
+
     @user = User.find_by(username: params[:user][:username], email: params[:user][:email])
     if @user
       session[:id] = @user.id
@@ -23,10 +24,11 @@ class UsersController < ApplicationController
       session[:password] = @user.password
       redirect to '/companies'
     end
+
   end
 
   get '/companies' do
-    "All the companies"
+    erb :'/companies/companies'
   end
 
 end
