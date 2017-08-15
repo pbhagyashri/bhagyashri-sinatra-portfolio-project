@@ -10,6 +10,10 @@ gem 'pry'
 gem 'rake'
 gem 'sinatra-activerecord'
 gem 'require_all'
-gem 'shotgun'
 gem 'bcrypt'
-gem 'tux'
+
+
+group :development do
+  gem "shotgun"
+  gem "tux"
+end

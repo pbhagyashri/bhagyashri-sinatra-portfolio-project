@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814175452) do
+ActiveRecord::Schema.define(version: 20170815164925) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170814175452) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "category"
     t.string "countries_of_use"
     t.string "active_ingredients"
     t.string "product_application"
