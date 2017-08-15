@@ -23,7 +23,6 @@ class UsersController < ApplicationController
       session[:password] = @user.password
       redirect to '/companies'
     end
-
   end
 
   get '/companies' do
