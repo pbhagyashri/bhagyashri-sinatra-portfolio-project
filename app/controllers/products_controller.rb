@@ -10,7 +10,6 @@ class ProductsController < ApplicationController
   end
 
   post '/products' do
-
     @product = Product.find_or_create_by(params[:user][:product])
     redirect to '/products'
   end

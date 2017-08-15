@@ -1,11 +1,12 @@
 <h3>You are logged in as, <%= session[:email] %></h3>
 
-<% Company.all.each do |company| %>
-  <%= company.name %>
-<% end %>
+ <% Company.all.each do |company| %>
+   <%= company.name %>
+ <% end %>
 
-<ul>
-  <% Product.all.each do |product| %>
-  <li><%= product.name %></li>
-  <% end %>
-</ul>
+ <ul>
+   <% Product.all.each do |product| %>
+   <li><%= product.name %></li>
+
+   <% end %>
+ </ul>

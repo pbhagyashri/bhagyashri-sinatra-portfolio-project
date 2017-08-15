@@ -10,7 +10,13 @@ class CompaniesController < ApplicationController
 
   post '/companies' do
     @company = Company.create(params[:company])
-
     redirect to '/companies'
   end
+
+  get '/companies/:id' do
+    @company = Company.find_by(id: params[:id])
+    erb :'companies/show'
+  end
+
+
 end

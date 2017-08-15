@@ -1,0 +1,15 @@
+<ul>
+
+  <% Product.all.each do |product| %>
+    <li><strong>Name:</strong> <%= product.name %></li>
+    <li><strong>Category:</strong> <%= product.category %></li>
+    <li><strong>Countries Of Use:</strong> <%= product.countries_of_use %></li>
+    <li><strong>Active Ingredients:</strong> <%= product.active_ingredients %></li>
+    <li><strong>Products Application:</strong> <%= product.product_application %></li>
+
+    <br><br>
+  <% end %>
+
+
+
+</ul>
