@@ -1,5 +1,7 @@
-<%= @company.name %>
+<h2><%= @company.name %></h2>
 
-<% @products.each do |p| %>
-  <%= p.name %>
-<% end %>
+<ul>
+  <% @products.each do |p| %>
+    <li><%= p.name %></li>
+  <% end %>
+</ul>

@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
 
   post '/products' do
     @product = Product.find_or_create_by(params[:user][:product])
-    if !params[:user][:company_name].empty?
+    if params[:user][:company_name].empty?
       @company = Company.find_by(params[:user][:product][:company_id])
       @company.products << @product
     else
@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
       @company.products << @product
     end
       @company.save
+
       redirect to '/products'
   end
 
