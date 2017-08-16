@@ -9,6 +9,7 @@ class CompaniesController < ApplicationController
   end
 
   post '/companies' do
+    binding.pry
     @company = Company.create(params[:company])
     redirect to '/companies'
   end
