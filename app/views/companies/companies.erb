@@ -3,5 +3,9 @@
 <ul>
   <% Company.all.each do |company| %>
     <li><%= company.name %></li>
+    <% company.products.each do |p| %>
+      <%= p.name %>
+    <% end %>
+    <br><br>
   <% end %>
 </ul>
