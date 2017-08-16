@@ -9,8 +9,11 @@ class CompaniesController < ApplicationController
   end
 
   post '/companies' do
-    binding.pry
-    @company = Company.create(params[:company])
+    @user = User.find_by(id: session[:id])
+
+    @company = Company.find_or_create_by(name: params[:user][:company][:name])
+    @user.companies << @company
+
     redirect to '/companies'
   end
 
