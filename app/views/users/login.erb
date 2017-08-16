@@ -1,5 +1,6 @@
-<form action="/login" method="post">
 
+<% if !Helpers.is_logged_in?(session) %>
+<form action="/login" method="post">
   <label>Please Enter Your Username: </label>
   <input type="text" name="user[username]">
   <br><br>
@@ -13,5 +14,7 @@
   <br><br>
 
   <input type="submit" value="Login">
-
 </form>
+<% else %>
+  <% redirect to '/' %>
+<% end %>
