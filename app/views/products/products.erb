@@ -1,17 +1,15 @@
-<ul>
-
-  <% Product.all.each do |product| %>
-    <li><strong>Name:</strong> <%= product.name %></li>
-    <li><strong>Category:</strong> <%= product.category %></li>
-    <li><strong>Countries Of Use:</strong> <%= product.countries_of_use %></li>
-    <li><strong>Active Ingredients:</strong> <%= product.active_ingredients %></li>
-    <li><strong>Products Application:</strong> <%= product.product_application %></li>
-    <br><br>
-
-    <h2>Company: <%= product.company.name  %></h2>
-
-  <% end %>
-
-
-
-</ul>
+<% if Helpers.is_logged_in?(session) %>
+  <ul>
+    <% Product.all.each do |product| %>
+      <li><strong>Name:</strong> <%= product.name %></li>
+      <li><strong>Category:</strong> <%= product.category %></li>
+      <li><strong>Countries Of Use:</strong> <%= product.countries_of_use %></li>
+      <li><strong>Active Ingredients:</strong> <%= product.active_ingredients %></li>
+      <li><strong>Products Application:</strong> <%= product.product_application %></li>
+      <br><br>
+      <h2>Company: <%= product.company.name  %></h2>
+    <% end %>
+  </ul>
+<% else %>
+  <% redirect to '/login' %>
+<% end %>

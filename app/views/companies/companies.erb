@@ -1,11 +1,15 @@
 <h2>All Your Companies: </h2>
 
-<ul>
-  <% Company.all.each do |company| %>
-    <li><%= company.name %></li>
-    <% company.products.each do |p| %>
-      <%= p.name %>
+<% if Helpers.is_logged_in?(session) %>
+  <ul>
+    <% Company.all.each do |company| %>
+      <li><%= company.name %></li>
+      <% company.products.each do |p| %>
+        <%= p.name %>
+      <% end %>
+      <br><br>
     <% end %>
-    <br><br>
-  <% end %>
-</ul>
+  </ul>
+<% else %>
+  <% redirect to '/login' %>
+<% end %>
