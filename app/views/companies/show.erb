@@ -1,12 +1,18 @@
-<h2><%= @company.name %></h2>
+<% if Helpers.is_logged_in?(session) %>
+  <% if Helpers.current_user(session) %>
+    <h2><%= @company.name %></h2>
 
-<ul>
-  <% @products.each do |p| %>
-    <li><%= p.name %></li>
+    <ul>
+      <% @products.each do |p| %>
+        <li><%= p.name %></li>
+      <% end %>
+    </ul>
+
+    <form  action="/companies/<%= @company.slug %>/delete" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Company">
+    </form>
   <% end %>
-</ul>
-
-<form  action="/companies/<%= @company.slug %>/delete" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Company">
-</form>
+<% else %>
+  <% redirect to '/login' %>
+<% end %>
