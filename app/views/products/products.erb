@@ -1,15 +1,20 @@
 <% if Helpers.is_logged_in?(session) %>
+<div class="box bigger_box">
+
   <ul>
     <% Product.all.each do |product| %>
-      <li><strong>Name:</strong> <%= product.name %></li>
-      <li><strong>Category:</strong> <%= product.category %></li>
-      <li><strong>Countries Of Use:</strong> <%= product.countries_of_use %></li>
-      <li><strong>Active Ingredients:</strong> <%= product.active_ingredients %></li>
-      <li><strong>Products Application:</strong> <%= product.product_application %></li>
-      <br><br>
-      <h2>Company: <%= product.company.name  %></h2>
+      <h2 class="product_name"><%= product.name %></h2>
+      <li class="product_list"><span>Category:</span> <%= product.category %></li>
+      <li class="product_list"><span>Countries Of Use:</span> <%= product.countries_of_use %></li>
+      <li class="product_list"><span>Active Ingredients:</span> <%= product.active_ingredients %></li>
+      <li class="product_list"><span>Products Application:</span> <%= product.product_application %></li>
+
+      <h3>Company: <%= product.company.name  %></h2>
+        <br>
     <% end %>
   </ul>
+  <a href="/" class="buttons">Home</a>
+</div>
 <% else %>
   <% redirect to '/login' %>
 <% end %>

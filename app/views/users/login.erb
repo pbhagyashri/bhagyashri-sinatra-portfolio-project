@@ -1,5 +1,7 @@
 
 <% if !Helpers.is_logged_in?(session) %>
+<div class="box bigger_box">
+
 <form action="/login" method="post">
   <label>Please Enter Your Username: </label>
   <input type="text" name="user[username]">
@@ -13,8 +15,9 @@
   <input type="password" name="user[password]">
   <br><br>
 
-  <input type="submit" value="Login">
+  <input class="form_buttons" type="submit" value="Login">
 </form>
+</div>
 <% else %>
   <% redirect to '/' %>
 <% end %>

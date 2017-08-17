@@ -1,4 +1,6 @@
-<h2>All Your Companies: </h2>
+<div class="box">
+
+<h2>Your Companies</h2>
 
 <% if Helpers.is_logged_in?(session) %>
   <ul>
@@ -8,12 +10,15 @@
 
         <li><%= company.name %></li>
         <% company.products.each do |p| %>
-          <%= p.name %>
+          <p class="sub-heading"><%= p.name %></p><a href="/products/<%= p.slug %>">Learn More</a>
         <% end %>
         <br><br>
       <% end %>
     <% end %>
   </ul>
+  <a class="buttons" href="/">Home</a>
 <% else %>
   <% redirect to '/login' %>
 <% end %>
+
+</div>
