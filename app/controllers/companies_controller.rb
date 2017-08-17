@@ -29,7 +29,7 @@ class CompaniesController < ApplicationController
   end
 
   patch '/companies/:slug' do
-    binding.pry
+
     @company = Company.find_by_slug(params[:slug])
     @company.name = params[:user][:company][:name]
     @company.save

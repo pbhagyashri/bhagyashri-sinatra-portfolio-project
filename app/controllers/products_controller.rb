@@ -29,4 +29,8 @@ class ProductsController < ApplicationController
     erb :'/products/show'
   end
 
+  get '/products/:slug/edit' do
+
+  end
+
 end
