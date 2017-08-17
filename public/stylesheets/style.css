@@ -1,1 +1,31 @@
+/*#E44424
+#67BCDB
+#A2AB58
+#FFFFFF*/
 
+/*#f0eceb
+#729f98
+#283018
+#aa863a
+#334431
+#97743a
+#b0a18e
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+body {background-color: #ba9077;}
+
+.box {
+  background-color: #bcd5d1;
+  width: 50%;
+  height: 500px;
+  margin-top: 15%;
+  margin-left: 25%;
+  padding: 10px;
+}
+h2 {
+  font-family: lato;
+  color: #1d2120;
+  text-align: center;
+}
