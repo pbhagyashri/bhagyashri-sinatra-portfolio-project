@@ -7,3 +7,8 @@
 <h3>Product Application: <%= @product.product_application %></h3>
 
 <h2>Company: <%= @company.name  %></h2>
+
+<form  action="/products/<%= @product.slug %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Product">
+</form>
