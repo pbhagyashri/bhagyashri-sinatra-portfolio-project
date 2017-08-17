@@ -35,4 +35,22 @@ class ProductsController < ApplicationController
     redirect to "/products"
   end
 
+  get '/products/:slug/edit' do
+    @product = Product.find_by_slug(params[:slug])
+
+    erb :'/products/edit'
+  end
+
+  patch '/products/:slug' do
+    @product = Product.find_by_slug(params[:slug])
+    @product.name = params[:user][:product][:name]
+    @product.categori = params[:user][:product][:categori]
+    @product.countrys_of_use = params[:user][:product][:countrys_of_use]
+    @product.active_ingredients = params[:user][:product][:active_ingredients]
+    @product.product_application = params[:user][:product][:product_application]
+
+    @product.save
+    redirect to "/products/#{@product.slug}"
+  end
+
 end
