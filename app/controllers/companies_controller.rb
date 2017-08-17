@@ -23,5 +23,17 @@ class CompaniesController < ApplicationController
     erb :'companies/show'
   end
 
+  get '/companies/:slug/edit' do
+    @company = Company.find_by_slug(params[:slug])
+    erb :'/companies/edit'
+  end
+
+  patch '/companies/:slug' do
+    binding.pry
+    @company = Company.find_by_slug(params[:slug])
+    @company.name = params[:user][:company][:name]
+    @company.save
+    redirect to '/companies/<%=@company.slug%>'
+  end
 
 end
