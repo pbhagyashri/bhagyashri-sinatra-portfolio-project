@@ -1,11 +1,16 @@
 module Slugifiable
-  def slug
-    self.name.parameterize
+
+  module InstanceMethods
+    def slug
+      self.name.parameterize
+    end
   end
 
-  def self.find_by_slug(slug)
-    self.all.find do |artist|
-      artist.slug == slug
+  module ClassMethods
+    def find_by_slug(slug)
+      self.all.find do |company|
+        company.slug == slug
+      end
     end
   end
 end

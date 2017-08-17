@@ -1,17 +1,22 @@
-<form action="/signup" method="post">
 
-  <label>Please choose a Username: </label>
-  <input type="text" name="user[username]">
-  <br><br>
+<% if !Helpers.is_logged_in?(session) %>
+  <form action="/signup" method="post">
 
-  <label>Please enter your Email Address: </label>
-  <input type="email" name="user[email]">
-  <br><br>
+    <label>Please choose a Username: </label>
+    <input type="text" name="user[username]">
+    <br><br>
 
-  <label>Please choose a Password</label>
-  <input type="password" name="user[password]">
-  <br><br>
+    <label>Please enter your Email Address: </label>
+    <input type="email" name="user[email]">
+    <br><br>
 
-  <input type="submit" value="Signup">
+    <label>Please choose a Password</label>
+    <input type="password" name="user[password]">
+    <br><br>
 
-</form>
+    <input type="submit" value="Signup">
+
+  </form>
+<% else %>
+  <% redirect to '/' %>
+<% end %>

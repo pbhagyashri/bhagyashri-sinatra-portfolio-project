@@ -1,4 +1,4 @@
-class Helper < ApplicationController
+class Helpers < ApplicationController
 
   def self.current_user(session)
     @user = User.find_by(id: session[:id])

@@ -1,7 +1,7 @@
 class Company < ActiveRecord::Base
 
-  include Slugifiable
-  extend Slugifiable
+  extend Slugifiable::ClassMethods
+  include Slugifiable::InstanceMethods
 
   belongs_to :user
   has_many :products

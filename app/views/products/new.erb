@@ -21,7 +21,7 @@
 
   <% Company.all.each do |company| %>
     <label><%= company.name %></label>
-    <input type="checkbox" name="user[product][company_id][]" value="<%= company.id %>">
+    <input type="radio" name="user[product][company_id][]" value="<%= company.id %>">
   <% end %>
   <br><br>
 

@@ -17,8 +17,8 @@ class CompaniesController < ApplicationController
     redirect to '/companies'
   end
 
-  get '/companies/:id' do
-    @company = Company.find_by(id: params[:id])
+  get '/companies/:slug' do
+    @company = Company.find_by_slug(params[:slug])
     @products = @company.products
     erb :'companies/show'
   end
