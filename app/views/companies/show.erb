@@ -5,3 +5,8 @@
     <li><%= p.name %></li>
   <% end %>
 </ul>
+
+<form  action="/companies/<%= @company.slug %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Company">
+</form>
