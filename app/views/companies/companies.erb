@@ -3,11 +3,15 @@
 <% if Helpers.is_logged_in?(session) %>
   <ul>
     <% Company.all.each do |company| %>
-      <li><%= company.name %></li>
-      <% company.products.each do |p| %>
-        <%= p.name %>
+      <% @user = User.find_by(id: session[:id]) %>
+      <% if @user.companies.include?(company) %>
+
+        <li><%= company.name %></li>
+        <% company.products.each do |p| %>
+          <%= p.name %>
+        <% end %>
+        <br><br>
       <% end %>
-      <br><br>
     <% end %>
   </ul>
 <% else %>
