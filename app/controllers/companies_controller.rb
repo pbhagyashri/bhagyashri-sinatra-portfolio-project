@@ -29,11 +29,10 @@ class CompaniesController < ApplicationController
   end
 
   patch '/companies/:slug' do
-
     @company = Company.find_by_slug(params[:slug])
     @company.name = params[:user][:company][:name]
     @company.save
-    redirect to '/companies/<%=@company.slug%>'
+    redirect to "/companies/#{@company.slug}"
   end
 
 end
