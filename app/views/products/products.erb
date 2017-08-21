@@ -1,15 +1,15 @@
-<% if Helpers.is_logged_in?(session) %>
-<div class="box bigger_box">
+<% if Helpers.is_logged_in?(session) && Helpers.current_user(session) %>
 
+<div class="box bigger_box">
   <ul>
     <% Product.all.each do |product| %>
-      <h2 class="product_name"><%= product.name %></h2>
+      <p class="product_name"><%= product.name %></p><a href="/products/<%= product.slug %>/edit">Edit</a>
       <li class="product_list"><span>Category:</span> <%= product.category %></li>
       <li class="product_list"><span>Countries Of Use:</span> <%= product.countries_of_use %></li>
       <li class="product_list"><span>Active Ingredients:</span> <%= product.active_ingredients %></li>
       <li class="product_list"><span>Products Application:</span> <%= product.product_application %></li>
 
-      <h3>Company: <%= product.company.name  %></h2>
+      <h3><span>Company:</span><%= product.company.name  %></h2>
         <br>
     <% end %>
   </ul>

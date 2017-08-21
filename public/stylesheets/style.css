@@ -19,11 +19,12 @@ span {
 }
 
 .product_name {
-  padding-top: 10px;
-  padding-bottom: 20px;
-  font-weight: 300;
+  display: inline-block;
+  color: #e6af4b;
+  padding: 10px 10px 20px 0;
   margin: 0;
   text-align: left;
+  font-size: 1.5em;
 }
 
 h3 {
@@ -71,8 +72,8 @@ label {
 }
 
 h2 {
+  padding-top: 20px;
   text-align: center;
-  margin: 10%;
 }
 
 li {

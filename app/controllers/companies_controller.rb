@@ -9,6 +9,7 @@ class CompaniesController < ApplicationController
   end
 
   post '/companies' do
+
     @user = User.find_by(id: session[:id])
 
     @company = Company.find_or_create_by(params[:user][:company])

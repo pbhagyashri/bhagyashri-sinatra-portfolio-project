@@ -3,12 +3,12 @@
   <div class="box bigger_box">
     <h2>Product Name: <%= @product.name %></h2>
 
-    <h3>Category: <%= @product.category %></h3>
-    <h3>Countries of use: <%= @product.countries_of_use %></h3>
-    <h3>Active Ingredients: <%= @product.active_ingredients %></h3>
-    <h3>Product Application: <%= @product.product_application %></h3>
+    <h3>Category: <span><%= @product.category %></span></h3>
+    <h3>Countries of use: <span><%= @product.countries_of_use %></span></h3>
+    <h3>Active Ingredients: <span><%= @product.active_ingredients %></span></h3>
+    <h3>Product Application: <span><%= @product.product_application %></span></h3>
 
-    <h2>Company: <%= @company.name  %></h2>
+    <h3>Company:<span><%= @company.name %></span></h3>
 
     <% if Helpers.current_user(session) %>
       <form action="/products/<%= @product.slug %>/delete" method="post">
