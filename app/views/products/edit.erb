@@ -1,36 +1,38 @@
-<form action="/products/<%=@product.slug%>" method="post">
-  <input type="hidden" name="_method" value="patch">
+<% if Helpers.is_logged_in?(session)%>
+  <form action="/products/<%=@product.slug%>" method="post">
+    <input type="hidden" name="_method" value="patch">
 
-  <label>Product Name: </label>
-  <input type="text" name="user[product][name]" value="<%= @product.name %>">
-  <br><br>
+    <label>Product Name: </label>
+    <input type="text" name="user[product][name]" value="<%= @product.name %>">
+    <br><br>
 
-  <label>Product Category: </label>
-  <input type="text" name="user[product][category]" value="<%= @product.category %>">
-  <br><br>
+    <label>Product Category: </label>
+    <input type="text" name="user[product][category]" value="<%= @product.category %>">
+    <br><br>
 
-  <label>Countries Of Use: </label>
-  <input type="text" name="user[product][countries_of_use]" value="<%= @product.countries_of_use %>">
-  <br><br>
+    <label>Countries Of Use: </label>
+    <input type="text" name="user[product][countries_of_use]" value="<%= @product.countries_of_use %>">
+    <br><br>
 
-  <label>Active Ingredients: </label>
-  <input type="text" name="user[product][active_ingredients]" value="<%= @product.active_ingredients %>">
-  <br><br>
+    <label>Active Ingredients: </label>
+    <input type="text" name="user[product][active_ingredients]" value="<%= @product.active_ingredients %>">
+    <br><br>
 
-  <label>Product Application: </label>
-  <input type="text" name="user[product][product_application]" value="<%= @product.product_application %>">
-  <br><br>
+    <label>Product Application: </label>
+    <input type="text" name="user[product][product_application]" value="<%= @product.product_application %>">
+    <br><br>
 
-  <% Company.all.each do |company| %>
-    <label><%= company.name %></label>
-    <input type="radio" name="user[product][company_id][]" value="<%= company.id %>" <%= 'checked' if @product.company == company %> >
-  <% end %>
-  <br><br>
+    <% Company.all.each do |company| %>
+      <label><%= company.name %></label>
+      <input type="radio" name="user[product][company_id][]" value="<%= company.id %>" <%= 'checked' if @product.company == company %> >
+    <% end %>
+    <br><br>
 
-  <label>Create Company: </label>
-  <input type="text" name="user[company_name]">
-  <br><br>
+    <label>Create Company: </label>
+    <input type="text" name="user[company_name]">
+    <br><br>
 
-  <input type="submit" value="Create Product">
+    <input class="form_buttons" type="submit" value="Edit Product">
 
-</form>
+  </form>
+<% end %>

@@ -1,16 +1,4 @@
-/*#E44424
-#67BCDB
-#A2AB58
-#FFFFFF*/
 
-/*#f0eceb
-#729f98
-#283018
-#aa863a
-#334431
-#97743a
-#b0a18e
-*/
 
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
@@ -73,7 +61,6 @@ a:hover {color: #e05038;}
 form {
   display: inline-block;
   padding: 30px;
-  background-color: #b0a18e;
   width: 80%;
   margin: 5%;
 }

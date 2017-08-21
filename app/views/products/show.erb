@@ -1,14 +1,22 @@
+<% if Helpers.is_logged_in?(session) %>
 
-<h2>Product Name: <%= @product.name %></h2>
-<br>
-<h3>Category: <%= @product.category %></h3>
-<h3>Countries of use: <%= @product.countries_of_use %></h3>
-<h3>Active Ingredients: <%= @product.active_ingredients %></h3>
-<h3>Product Application: <%= @product.product_application %></h3>
+  <div class="box bigger_box">
+    <h2>Product Name: <%= @product.name %></h2>
 
-<h2>Company: <%= @company.name  %></h2>
+    <h3>Category: <%= @product.category %></h3>
+    <h3>Countries of use: <%= @product.countries_of_use %></h3>
+    <h3>Active Ingredients: <%= @product.active_ingredients %></h3>
+    <h3>Product Application: <%= @product.product_application %></h3>
 
-<form  action="/products/<%= @product.slug %>/delete" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Product">
-</form>
+    <h2>Company: <%= @company.name  %></h2>
+
+    <% if Helpers.current_user(session) %>
+      <form action="/products/<%= @product.slug %>/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input class="form_buttons" type="submit" value="Delete Product">
+        <a href="/products/<%= @product.slug %>/edit"><h3 class="form_buttons">Edit</h3></a>
+      </form>
+    <% end %>
+
+  </div>
+<% end %>
