@@ -1,7 +1,7 @@
 <% if @user && !@user.errors.empty? %>
   <ul>
     <% @user.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
+      <li class="error"><%= error %></li>
     <% end %>
   </ul>
 <% end %>
@@ -17,7 +17,7 @@
     <input type="email" name="user[email]">
     <br><br>
 
-    <label>Please choose a Password</label>
+    <label>Please choose a Password: </label>
     <input type="password" name="user[password]">
     <br><br>
 

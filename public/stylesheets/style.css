@@ -1,5 +1,4 @@
 
-
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 body {
@@ -124,4 +123,15 @@ li {
   display: inline-block;
   font-family: lato;
   font-size: 1em;
+}
+
+.error {
+  color: red;
+  padding-top: 20px;
+  margin-left: 60px;
+}
+
+#company {
+  display: inline;
+  padding-right: 5px;
 }

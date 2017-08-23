@@ -9,7 +9,7 @@
       <% @user = User.find_by(id: session[:id]) %>
       <% if @user.companies.include?(company) %>
 
-        <li><%= company.name %></li>
+        <li id="company"><%= company.name %></li><a href="/companies/<%=company.slug%>/edit"><span>edit</span></a>
         <% company.products.each do |p| %>
           <p class="sub-heading"><%= p.name %></p><a href="/products/<%= p.slug %>">Learn More</a>
         <% end %>
