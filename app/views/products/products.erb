@@ -8,10 +8,16 @@
       <li class="product_list"><span>Countries Of Use:</span> <%= product.countries_of_use %></li>
       <li class="product_list"><span>Active Ingredients:</span> <%= product.active_ingredients %></li>
       <li class="product_list"><span>Products Application:</span> <%= product.product_application %></li>
-
-      <h3><span>Company:</span><%= product.company.name  %></h2>
-        <br>
+      <br>
+      <% company = product.company %>
+      <% if company != nil%>
+        <span>Company</span><span><a href="/companies/<%= company.slug %>"><%=company.name%></span>
+      <% else %>
+        <span>No Company Associated</span>
+      <% end %>
+      <br><br>
     <% end %>
+
   </ul>
   <a href="/" class="buttons">Home</a>
 </div>
