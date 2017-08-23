@@ -21,12 +21,10 @@
     <label>Product Application: </label>
     <input type="text" name="user[product][product_application]" value="<%= @product.product_application %>">
     <br><br>
-
-    <% Company.all.each do |company| %>
+    <% @user = User.find_by(id: session[:id]) %>
+    <% @user.companies.each do |company| %>
       <label><%= company.name %></label>
-      <% if Company.all.include?(company)%>
-        <input type="radio" name="user[product][company_id][]" value="<%= company.id %>" <%= 'checked' if @product.company == company %> >
-      <% end %>
+      <input type="radio" name="user[product][company_id][]" value="<%= company.id %>" <%= 'checked' if @product.company == company %> >
     <% end %>
     <br><br>
 

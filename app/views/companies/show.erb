@@ -1,6 +1,6 @@
 <% if Helpers.is_logged_in?(session) %>
   <% if Helpers.current_user(session) %>
-    <div class="box">
+    <div class="bgcolor">
       <h2><%= @company.name %></h2>
       <ul>
         <% @products.each do |p| %>

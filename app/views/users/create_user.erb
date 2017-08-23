@@ -7,6 +7,8 @@
 <% end %>
 
 <% if !Helpers.is_logged_in?(session) %>
+<div class="bgcolor">
+
   <form action="/signup" method="post">
 
     <label>Please choose a Username: </label>
@@ -24,6 +26,8 @@
     <input type="submit" value="Signup">
 
   </form>
+
+</div>
 <% else %>
   <% redirect to '/' %>
 <% end %>

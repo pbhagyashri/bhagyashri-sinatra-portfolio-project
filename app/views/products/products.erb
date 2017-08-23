@@ -1,6 +1,6 @@
 <% if Helpers.is_logged_in?(session) && Helpers.current_user(session) %>
 
-<div class="box bigger_box">
+<div class="bgcolor">
   <ul>
     <% Product.all.each do |product| %>
       <% @user = User.find_by(id: session[:id]) %>
@@ -13,7 +13,7 @@
         <br>
         <% company = product.company %>
         <% if company != nil%>
-          <span>Company</span><span><a href="/companies/<%= company.slug %>"><%=company.name%></span>
+          <span>Company</span><span><%=company.name%></span>
         <% else %>
           <span>No Company Associated</span>
         <% end %>

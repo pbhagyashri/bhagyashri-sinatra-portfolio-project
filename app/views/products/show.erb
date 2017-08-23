@@ -1,6 +1,6 @@
 <% if Helpers.is_logged_in?(session) %>
 
-  <div class="box bigger_box">
+  <div class="bgcolor">
     <h2>Product Name: <%= @product.name %></h2>
 
     <h3>Category: <span><%= @product.category %></span></h3>
@@ -8,7 +8,9 @@
     <h3>Active Ingredients: <span><%= @product.active_ingredients %></span></h3>
     <h3>Product Application: <span><%= @product.product_application %></span></h3>
 
-    <h3>Company:<span><%= @company.name %></span></h3>
+    <% if @product.company != nil%>
+      <h3>Company:<span><%= @company.name %></span></h3>
+    <% end %>
 
     <% if Helpers.current_user(session) %>
       <form action="/products/<%= @product.slug %>/delete" method="post">
@@ -17,6 +19,6 @@
         <a href="/products/<%= @product.slug %>/edit"><h3 class="form_buttons">Edit</h3></a>
       </form>
     <% end %>
-
+    <a href="/" class="buttons">Home</a>
   </div>
 <% end %>

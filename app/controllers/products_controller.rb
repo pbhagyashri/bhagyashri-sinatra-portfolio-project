@@ -15,7 +15,8 @@ class ProductsController < ApplicationController
       @company = Company.find_by(id: params[:user][:product][:company_id])
       @company.products << @product
     else
-      @company = Company.create(name: params[:user][:company_name])
+      user = User.find(session[:id])
+      @company = user.companies.create(name: params[:user][:company_name])
       @company.products << @product
     end
       @company.save
@@ -42,6 +43,7 @@ class ProductsController < ApplicationController
   end
 
   patch '/products/:slug' do
+
     @product = Product.find_by_slug(params[:slug])
     @product.name = params[:user][:product][:name]
     @product.category = params[:user][:product][:category]
@@ -50,7 +52,12 @@ class ProductsController < ApplicationController
     @product.product_application = params[:user][:product][:product_application]
 
     if !params[:user][:company_name].empty?
-      @product.company = Company.create(name: params[:user][:company_name])
+      @user = User.find(session[:id])
+
+      company = Company.create(name: params[:user][:company_name])
+      @product.company = company
+      @user.companies << company
+
     else
       @product.company = Company.find_by(id: params[:user][:product][:company_id])
     end

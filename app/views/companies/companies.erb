@@ -1,5 +1,5 @@
 
-<div class="box">
+<div class="bgcolor">
 
 <h2>Your Companies</h2>
 
@@ -10,6 +10,7 @@
       <% if @user.companies.include?(company) %>
 
         <li id="company"><%= company.name %></li><a href="/companies/<%=company.slug%>/edit"><span>edit</span></a>
+        <br>
         <% company.products.each do |p| %>
           <p class="sub-heading"><%= p.name %></p><a href="/products/<%= p.slug %>">Learn More</a>
         <% end %>

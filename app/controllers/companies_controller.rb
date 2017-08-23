@@ -39,6 +39,7 @@ class CompaniesController < ApplicationController
   delete '/companies/:slug/delete' do
     @company = Company.find_by_slug(params[:slug])
     @company.destroy
+    @company.products.destroy_all
     redirect to "/companies"
   end
 
