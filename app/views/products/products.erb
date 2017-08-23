@@ -3,22 +3,29 @@
 <div class="box bigger_box">
   <ul>
     <% Product.all.each do |product| %>
-      <p class="product_name"><%= product.name %></p><a href="/products/<%= product.slug %>/edit">Edit</a>
-      <li class="product_list"><span>Category:</span> <%= product.category %></li>
-      <li class="product_list"><span>Countries Of Use:</span> <%= product.countries_of_use %></li>
-      <li class="product_list"><span>Active Ingredients:</span> <%= product.active_ingredients %></li>
-      <li class="product_list"><span>Products Application:</span> <%= product.product_application %></li>
-      <br>
-      <% company = product.company %>
-      <% if company != nil%>
-        <span>Company</span><span><a href="/companies/<%= company.slug %>"><%=company.name%></span>
-      <% else %>
-        <span>No Company Associated</span>
+      <% @user = User.find_by(id: session[:id]) %>
+      <% if @user.companies.any?{|comp| comp.products.include?(product)}%>
+        <p class="product_name"><%= product.name %></p><a href="/products/<%= product.slug %>/edit">Edit</a>
+        <li class="product_list"><span>Category:</span> <%= product.category %></li>
+        <li class="product_list"><span>Countries Of Use:</span> <%= product.countries_of_use %></li>
+        <li class="product_list"><span>Active Ingredients:</span> <%= product.active_ingredients %></li>
+        <li class="product_list"><span>Products Application:</span> <%= product.product_application %></li>
+        <br>
+        <% company = product.company %>
+        <% if company != nil%>
+          <span>Company</span><span><a href="/companies/<%= company.slug %>"><%=company.name%></span>
+        <% else %>
+          <span>No Company Associated</span>
+        <% end %>
       <% end %>
       <br><br>
     <% end %>
 
   </ul>
+  <div>
+    <a class="small_buttons" href="/companies/new">Add Company</a>
+    <a class="small_buttons" href="/products/new">Add Products</a>
+  </div>
   <a href="/" class="buttons">Home</a>
 </div>
 <% else %>
