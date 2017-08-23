@@ -5,9 +5,13 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    @user = User.create(params[:user])
-    session[:id] = @user.id
-    redirect '/companies'
+    @user = User.new(params[:user])
+    if @user.save
+      session[:id] = @user.id
+      redirect '/companies'
+    else
+      erb :'users/create_user'
+    end
   end
 
   get '/login' do

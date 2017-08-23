@@ -1,12 +1,13 @@
 <div class="box">
   <h2>Welcome to My App</h2>
-  <a  href="/login" class="buttons">Login</a>
-  <a  href="/signup" class="buttons">Signup</a>
-  <a  href="/logout" class="buttons">Logout</a>
 
   <% if !Helpers.is_logged_in?(session)%>
     <h4 id="please_login">Please login to get started </h4>
+    <a  href="/login" class="buttons">Login</a>
+    <a  href="/signup" class="buttons">Signup</a>
+
   <% else %>
+  <a href="/logout" class="buttons">Logout</a>
   <div class="button_box">
     <a href="/companies" class="small_buttons">Companies</a>
     <a href="/products" class="small_buttons">Products</a>

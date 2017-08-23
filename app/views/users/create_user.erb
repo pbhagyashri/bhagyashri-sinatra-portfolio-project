@@ -1,3 +1,10 @@
+<% if @user && !@user.errors.empty? %>
+  <ul>
+    <% @user.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <% if !Helpers.is_logged_in?(session) %>
   <form action="/signup" method="post">

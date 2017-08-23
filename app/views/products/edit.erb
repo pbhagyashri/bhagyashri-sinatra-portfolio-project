@@ -24,7 +24,9 @@
 
     <% Company.all.each do |company| %>
       <label><%= company.name %></label>
-      <input type="radio" name="user[product][company_id][]" value="<%= company.id %>" <%= 'checked' if @product.company == company %> >
+      <% if Company.all.include?(company)%>
+        <input type="radio" name="user[product][company_id][]" value="<%= company.id %>" <%= 'checked' if @product.company == company %> >
+      <% end %>
     <% end %>
     <br><br>
 

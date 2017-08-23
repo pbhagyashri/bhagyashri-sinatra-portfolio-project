@@ -12,7 +12,7 @@ gem 'sinatra-activerecord'
 gem 'require_all'
 gem 'bcrypt'
 gem 'rack'
-
+gem 'rack-flash3'
 
 group :development do
   gem "shotgun"
