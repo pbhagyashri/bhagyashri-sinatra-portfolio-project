@@ -2,18 +2,17 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 html {height: 100%}
 body {
-
   font-family: lato;
   color: #3b3a36;
   font-weight: 400;
 }
 
 .bgcolor {
-  padding: 10px;
-  width: 1140px;
-  background: #e9ece5;
   display: inline-block;
-  text-align: center;
+  padding: 10px;
+  width: 80%;
+  /*background: #e9ece5;*/
+  margin-left: 10%;
 }
 
 h1, h2 {

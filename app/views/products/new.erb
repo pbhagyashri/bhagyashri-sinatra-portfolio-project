@@ -1,4 +1,11 @@
+
+
 <div class="bgcolor">
+
+  <% if flash.has?(:message) %>
+    <p><%= flash[:message] %></p>
+  <% end %>
+
 
   <form action="/products" method="post">
     <label>Product Name: </label>
@@ -21,7 +28,7 @@
     <input type="text" name="user[product][product_application]">
     <br><br>
 
-    <% Company.all.each do |company| %>
+    <% @companies.each do |company| %>
       <label><%= company.name %></label>
       <input type="radio" name="user[product][company_id][]" value="<%= company.id %>">
     <% end %>

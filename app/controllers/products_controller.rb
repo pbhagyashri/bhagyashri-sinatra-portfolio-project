@@ -5,23 +5,36 @@ class ProductsController < ApplicationController
   end
 
   get '/products/new' do
+
+    @user = Helpers.current_user(session)
+    @companies = @user.companies
     erb :'/products/new'
   end
 
   post '/products' do
 
-    @product = Product.create(params[:user][:product])
-    if params[:user][:company_name].empty?
-      @company = Company.find_by(id: params[:user][:product][:company_id])
-      @company.products << @product
-    else
-      user = User.find(session[:id])
-      @company = user.companies.create(name: params[:user][:company_name])
-      @company.products << @product
-    end
-      @company.save
+    @product = Product.find_by(name: params[:user][:product][:name])
+    if @product.nil?
+      @product = Product.find_or_create_by(name: params[:user][:product][:name])
+      if params[:user][:company_name].empty?
+        @company = Company.find_by(id: params[:user][:product][:company_id])
+        @company.products << @product
+      else
+        user = User.find(session[:id])
+        @company = user.companies.find_or_create_by(name: params[:user][:company_name])
+        @company.products << @product
 
-      redirect to '/products'
+      end
+        @company.save
+
+        redirect to '/products'
+      else
+        #  "Already Exist"
+        @user = Helpers.current_user(session)
+        @companies = @user.companies
+         flash[:message] = "Already Exist"
+         erb :'products/new'
+      end
   end
 
   get '/products/:slug' do
