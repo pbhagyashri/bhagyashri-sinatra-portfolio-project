@@ -1,6 +1,7 @@
 <div class="bgcolor">
 
   <% if !Helpers.is_logged_in?(session)%>
+    <h2 id="logo">Welcome to Informed Farming!</h2>
     <h4 id="please_login">Please login to get started </h4>
     <a  href="/login" class="buttons">Login</a>
     <a  href="/signup" class="buttons">Signup</a>
