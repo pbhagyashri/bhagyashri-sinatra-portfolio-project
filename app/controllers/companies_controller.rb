@@ -11,8 +11,16 @@ class CompaniesController < ApplicationController
   post '/companies' do
 
     @user = User.find_by(id: session[:id])
-
-    @company = Company.find_or_create_by(params[:user][:company])
+    #checking user's companies to see if company that user is trying to create already exists.
+    @company = @user.companies.find_by(name: params[:user][:company][:name], user_id: @user.id)
+    if !@company.nil?
+      # Rendering an error message if company already exist.
+      flash[:message] = "Company Already Exists"
+      redirect to 'companies/new'
+    else
+      #creating a new company if doesn't already exist.
+      @company = Company.create(params[:user][:company])
+    end
     @user.companies << @company
     @user.save
     redirect to '/companies'

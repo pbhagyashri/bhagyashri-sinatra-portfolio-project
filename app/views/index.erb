@@ -1,5 +1,4 @@
 <div class="bgcolor">
-  <h2>Welcome to My App</h2>
 
   <% if !Helpers.is_logged_in?(session)%>
     <h4 id="please_login">Please login to get started </h4>
@@ -7,6 +6,8 @@
     <a  href="/signup" class="buttons">Signup</a>
 
   <% else %>
+  <% user = User.find(session[:id]) %>
+  <h2>Welcome <%= user.username %></h2>
   <a href="/logout" class="buttons logout">Logout</a>
   <div class="button_box">
       <a href="/companies" class="small_buttons">Companies</a>

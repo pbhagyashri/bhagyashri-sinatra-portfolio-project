@@ -5,32 +5,32 @@ class ProductsController < ApplicationController
   end
 
   get '/products/new' do
-
     @user = Helpers.current_user(session)
     @companies = @user.companies
     erb :'/products/new'
   end
 
   post '/products' do
+    @user = User.find_by(id: session[:id])
 
-    @product = Product.find_by(name: params[:user][:product][:name])
+    #checking user's products to see if product that user is trying to create already exists.
+    @product = @user.products.find_by(name: params[:user][:product][:name])
     if @product.nil?
-      @product = Product.find_or_create_by(name: params[:user][:product][:name])
+      # if product doesn't already exists, creates a new products
+      @product = Product.create(params[:user][:product])
       if params[:user][:company_name].empty?
-        @company = Company.find_by(id: params[:user][:product][:company_id])
+        @company = @user.companies.find_by(id: params[:user][:product][:company_id])
         @company.products << @product
       else
-        user = User.find(session[:id])
-        @company = user.companies.find_or_create_by(name: params[:user][:company_name])
+        @company = @user.companies.find_or_create_by(name: params[:user][:company_name])
         @company.products << @product
-
       end
         @company.save
 
         redirect to '/products'
       else
-        #  "Already Exist"
         @user = Helpers.current_user(session)
+        #Finding users companies to user to render radio buttons in new form.
         @companies = @user.companies
          flash[:message] = "Already Exist"
          erb :'products/new'
