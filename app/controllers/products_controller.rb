@@ -29,8 +29,8 @@ class ProductsController < ApplicationController
 
         redirect to '/products'
       else
-        @user = Helpers.current_user(session)
-        #Finding users companies to user to render radio buttons in new form.
+        #Finding user's companies to render radio buttons in new form.
+        #Itterate over @companies to list out user's existing companies
         @companies = @user.companies
          flash[:message] = "Already Exist"
          erb :'products/new'
