@@ -1,21 +1,13 @@
-
 <div class="bgcolor">
-
-<h2>Your Companies</h2>
-
-<% if Helpers.is_logged_in?(session) %>
+  <h2>Your Companies</h2>
   <ul>
-    <% Company.all.each do |company| %>
-      <% @user = User.find_by(id: session[:id]) %>
-      <% if @user.companies.include?(company) %>
-
-        <li id="company"><%= company.name %></li><a href="/companies/<%=company.slug%>/edit"><span>edit</span></a>
-        <br>
-        <% company.products.each do |p| %>
-          <p class="sub-heading"><%= p.name %></p><a href="/products/<%= p.slug %>">Learn More</a><br>
-        <% end %>
-        <br><br>
+    <% current_user.companies.each do |company| %>
+      <li id="company"><%= company.name %></li><a href="/companies/<%=company.slug%>/edit"><span>edit</span></a>
+      <br>
+      <% company.products.each do |product| %>
+        <p class="sub-heading"><%= product.name %></p><a href="/products/<%= product.slug %>">Learn More</a><br>
       <% end %>
+      <br><br>
     <% end %>
   </ul>
   <div>
@@ -23,8 +15,4 @@
     <a class="small_buttons" href="/products/new">Add Products</a>
   </div>
   <a class="buttons" href="/">Home</a>
-<% else %>
-  <% redirect to '/login' %>
-<% end %>
-
 </div>

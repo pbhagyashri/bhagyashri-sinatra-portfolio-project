@@ -1,15 +1,25 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    erb :'users/create_user'
+    if !logged_in?
+      erb :'users/create_user'
+    else
+      redirect to '/'
+    end
   end
 
   post '/signup' do
-    @user = User.new(params[:user])
-    if @user.save
-      session[:id] = @user.id
-      redirect '/companies'
+    existing_user = User.find_by(username: params[:user][:username], email: params[:user][:email])
+    if !existing_user
+      @user = User.new(params[:user])
+      if @user.save
+        session[:user_id] = @user.id
+        redirect '/companies'
+      else
+        erb :'users/create_user'
+      end
     else
+      flash[:message] = "Username and email already exists"
       erb :'users/create_user'
     end
   end
@@ -22,11 +32,8 @@ class UsersController < ApplicationController
 
     @user = User.find_by(username: params[:user][:username], email: params[:user][:email])
 
-    if @user
-      session[:id] = @user.id
-      session[:username] = @user.username
-      session[:email] = @user.email
-      session[:password] = @user.password
+    if @user && @user.authenticate(params[:user][:password])
+      session[:user_id] = @user.id
       redirect to '/companies'
     #else
       #flash[:message] = "Please enter valid email, username and password"

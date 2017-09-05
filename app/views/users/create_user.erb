@@ -6,7 +6,6 @@
   </ul>
 <% end %>
 
-<% if !Helpers.is_logged_in?(session) %>
 <div class="bgcolor">
 
   <form action="/signup" method="post">
@@ -24,10 +23,6 @@
     <br><br>
 
     <input type="submit" value="Signup">
-
   </form>
 
 </div>
-<% else %>
-  <% redirect to '/' %>
-<% end %>

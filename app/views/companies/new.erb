@@ -1,12 +1,8 @@
 <div class="bgcolor">
-  <% if flash.has?(:message) %>
-    <p><%= flash[:message] %></p>
-  <% end %>
   <form action="/companies" method="post">
     <label>Company Name: </label>
-    <input type="text" name="user[company][name]">
+    <input type="text" name="company[name]">
     <br><br>
-
     <input type="submit" value="Create Company">
   </form>
   <a href="/" class="buttons">Home</a>
