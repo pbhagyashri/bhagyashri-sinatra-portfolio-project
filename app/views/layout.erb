@@ -9,7 +9,7 @@
   <body bgcolor = "#3b3a36">
     <div class="bgcolor">
       <% if flash.has?(:message) %>
-        <h2><%= flash[:message] %></h2>
+        <h3 style="color:red; text-align:center;" class="error_message"><%= flash[:message] %></h3>
       <% end %>
       <%= yield %>
     </div>

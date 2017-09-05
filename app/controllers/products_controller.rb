@@ -35,6 +35,7 @@ class ProductsController < ApplicationController
           @company = current_user.companies.find_by(id: params[:product][:company_id])
           @company.products << @product
         else
+          # if user create existing company again, find_or_create_by will find that company
           @company = current_user.companies.find_or_create_by(name: params[:company][:company_name])
           @company.products << @product
         end
@@ -91,9 +92,11 @@ class ProductsController < ApplicationController
       @product.product_application = params[:product][:product_application]
 
       if !params[:company][:company_name].empty?
-        company = Company.create(name: params[:company][:company_name])
+
+        company = current_user.companies.find_or_create_by(name: params[:company][:company_name])
         @product.company = company
         current_user.companies << company
+
       else
         @product.company = current_user.companies.find_by(id: params[:product][:company_id])
       end

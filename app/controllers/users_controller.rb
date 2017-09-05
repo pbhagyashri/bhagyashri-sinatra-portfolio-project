@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    if !logged_in?
+    if !is_logged_in?
       erb :'users/create_user'
     else
       redirect to '/'
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    existing_user = User.find_by(username: params[:user][:username], email: params[:user][:email])
+    existing_user = User.find_by(email: params[:user][:email])
     if !existing_user
       @user = User.new(params[:user])
       if @user.save
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
         erb :'users/create_user'
       end
     else
-      flash[:message] = "Username and email already exists"
+      flash[:message] = "email already exists in our database Please signup with another email."
       erb :'users/create_user'
     end
   end
@@ -35,8 +35,6 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       redirect to '/companies'
-    #else
-      #flash[:message] = "Please enter valid email, username and password"
     end
 
   end
