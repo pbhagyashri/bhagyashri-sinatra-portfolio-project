@@ -1,21 +1,19 @@
 
 <div class="bgcolor">
 
+<h2>Your Companies</h2>
+
 <% if Helpers.is_logged_in?(session) %>
-  <% user = User.find(session[:id]) %>
-  <h2>Welcome <%= user.username %></h2>
-  <h2>Your Companies</h2>
   <ul>
     <% Company.all.each do |company| %>
-      <% if user.companies.include?(company) %>
+      <% @user = User.find_by(id: session[:id]) %>
+      <% if @user.companies.include?(company) %>
 
         <li id="company"><%= company.name %></li><a href="/companies/<%=company.slug%>/edit"><span>edit</span></a>
         <br>
-        <ul>
-          <% company.products.each do |p| %>
-          <p class="sub-heading"><%= p.name %></p><a href="/products/<%= p.slug %>">Learn More</a><br>
-          <% end %>
-        </ul>
+        <% company.products.each do |p| %>
+          <p class="sub-heading"><%= p.name %></p><a href="/products/<%= p.slug %>">Learn More</a>
+        <% end %>
         <br><br>
       <% end %>
     <% end %>
