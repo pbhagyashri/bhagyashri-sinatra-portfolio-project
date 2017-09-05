@@ -1,12 +1,10 @@
-<div class="bgcolor">
-  <form action="/companies/<%=@company.slug%>" method="post">
-    <input type="hidden" name="_method" value="patch">
+<form action="/companies/<%=@company.slug%>" method="post">
+  <input type="hidden" name="_method" value="patch">
 
-    <label>Company Name: </label>
-    <input type="text" name="company[name]" value="<%= @company.name %>">
-    <br><br>
+  <label>Company Name: </label>
+  <input type="text" name="company[name]" value="<%= @company.name %>">
+  <br><br>
 
-    <input type="submit" value="Edit Company">
-  </form>
-  <a href="/" class="buttons">Home</a>
-</div>
+  <input type="submit" value="Edit Company">
+</form>
+<a href="/" class="buttons">Home</a>

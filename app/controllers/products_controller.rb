@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 
   get '/products' do
     if is_logged_in?
+      @products = current_user.products
       erb :'/products/products'
     else
       redirect to '/login'

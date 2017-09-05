@@ -1,29 +1,25 @@
-
-<div class="bgcolor">
-  <ul>
-    <% current_user.products.all.each do |product| %>
-
-      <% if current_user.companies.any?{|comp| comp.products.include?(product)}%>
-        <p class="product_name"><%= product.name %></p><a href="/products/<%= product.slug %>/edit">Edit</a>
-        <li class="product_list"><span>Category:</span> <%= product.category %></li>
-        <li class="product_list"><span>Countries Of Use:</span> <%= product.countries_of_use %></li>
-        <li class="product_list"><span>Active Ingredients:</span> <%= product.active_ingredients %></li>
-        <li class="product_list"><span>Products Application:</span> <%= product.product_application %></li>
-        <br>
-        <% company = product.company %>
-        <% if company != nil%>
-          <span>Company</span><span><%=company.name%></span>
-        <% else %>
-          <span>No Company Associated</span>
-        <% end %>
+<ul>
+  <% @products.all.each do |product| %>
+    <% if current_user.companies.any?{|comp| comp.products.include?(product)}%>
+      <p class="product_name"><%= product.name %></p><a href="/products/<%= product.slug %>/edit">Edit</a>
+      <li class="product_list"><span>Category:</span> <%= product.category %></li>
+      <li class="product_list"><span>Countries Of Use:</span> <%= product.countries_of_use %></li>
+      <li class="product_list"><span>Active Ingredients:</span> <%= product.active_ingredients %></li>
+      <li class="product_list"><span>Products Application:</span> <%= product.product_application %></li>
+      <br>
+      <% company = product.company %>
+      <% if company != nil%>
+        <span>Company</span><span><%=company.name%></span>
+      <% else %>
+        <span>No Company Associated</span>
       <% end %>
-      <br><br>
     <% end %>
+    <br><br>
+  <% end %>
+</ul>
 
-  </ul>
-  <div>
-    <a class="small_buttons" href="/companies/new">Add Company</a>
-    <a class="small_buttons" href="/products/new">Add Products</a>
-  </div>
-  <a href="/" class="buttons">Home</a>
+<div>
+  <a class="small_buttons" href="/companies/new">Add Company</a>
+  <a class="small_buttons" href="/products/new">Add Products</a>
 </div>
+<a href="/" class="buttons">Home</a>

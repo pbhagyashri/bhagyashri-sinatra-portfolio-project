@@ -1,7 +1,7 @@
 <div class="bgcolor">
   <h2>Your Companies</h2>
   <ul>
-    <% current_user.companies.each do |company| %>
+    <% @companies.each do |company| %>
       <li id="company"><%= company.name %></li><a href="/companies/<%=company.slug%>/edit"><span>edit</span></a>
       <br>
       <% company.products.each do |product| %>

@@ -1,18 +1,14 @@
-<div class="bgcolor">
+<h2><%= @company.name %></h2>
 
-  <h2><%= @company.name %></h2>
+<ul>
+  <% @products.each do |product| %>
+    <li><%= product.name %></li>
+  <% end %>
+</ul>
 
-  <ul>
-    <% @products.each do |product| %>
-      <li><%= product.name %></li>
-    <% end %>
-  </ul>
+<form  action="/companies/<%= @company.slug %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Company">
+</form>
 
-  <form  action="/companies/<%= @company.slug %>/delete" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete Company">
-  </form>
-
-  <a href="/" class="buttons">Home</a>
-
-</div>
+<a href="/" class="buttons">Home</a>
