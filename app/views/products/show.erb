@@ -1,4 +1,3 @@
-<% if Helpers.is_logged_in?(session) %>
 
   <div class="bgcolor">
     <h2>Product Name: <%= @product.name %></h2>
@@ -12,13 +11,11 @@
       <h3>Company:<span><%= @company.name %></span></h3>
     <% end %>
 
-    <% if Helpers.current_user(session) %>
-      <form action="/products/<%= @product.slug %>/delete" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input class="form_buttons" type="submit" value="Delete Product">
-        <a href="/products/<%= @product.slug %>/edit"><h3 class="form_buttons">Edit</h3></a>
-      </form>
-    <% end %>
+    <form action="/products/<%= @product.slug %>/delete" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input class="form_buttons" type="submit" value="Delete Product">
+      <a href="/products/<%= @product.slug %>/edit"><h3 class="form_buttons">Edit</h3></a>
+    </form>
+
     <a href="/" class="buttons">Home</a>
   </div>
-<% end %>

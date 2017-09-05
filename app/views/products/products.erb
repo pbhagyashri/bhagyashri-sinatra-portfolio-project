@@ -1,10 +1,9 @@
-<% if Helpers.is_logged_in?(session) && Helpers.current_user(session) %>
 
 <div class="bgcolor">
   <ul>
-    <% Product.all.each do |product| %>
-      <% @user = User.find_by(id: session[:id]) %>
-      <% if @user.companies.any?{|comp| comp.products.include?(product)}%>
+    <% current_user.products.all.each do |product| %>
+
+      <% if current_user.companies.any?{|comp| comp.products.include?(product)}%>
         <p class="product_name"><%= product.name %></p><a href="/products/<%= product.slug %>/edit">Edit</a>
         <li class="product_list"><span>Category:</span> <%= product.category %></li>
         <li class="product_list"><span>Countries Of Use:</span> <%= product.countries_of_use %></li>
@@ -28,6 +27,3 @@
   </div>
   <a href="/" class="buttons">Home</a>
 </div>
-<% else %>
-  <% redirect to '/login' %>
-<% end %>

@@ -1,21 +1,18 @@
-<% if Helpers.is_logged_in?(session) %>
-  <% if Helpers.current_user(session) %>
-    <div class="bgcolor">
-      <h2><%= @company.name %></h2>
-      <ul>
-        <% @products.each do |p| %>
-          <li><%= p.name %></li>
-        <% end %>
-      </ul>
+<div class="bgcolor">
 
-      <form  action="/companies/<%= @company.slug %>/delete" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="Delete Company">
-      </form>
-      <a href="/" class="buttons">Home</a>
+  <h2><%= @company.name %></h2>
 
-    </div>
-  <% end %>
-<% else %>
-  <% redirect to '/login' %>
-<% end %>
+  <ul>
+    <% @products.each do |product| %>
+      <li><%= product.name %></li>
+    <% end %>
+  </ul>
+
+  <form  action="/companies/<%= @company.slug %>/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Company">
+  </form>
+
+  <a href="/" class="buttons">Home</a>
+
+</div>

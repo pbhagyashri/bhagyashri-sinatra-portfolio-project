@@ -1,44 +1,35 @@
 
-
-<div class="bgcolor">
-
-  <% if flash.has?(:message) %>
-    <p><%= flash[:message] %></p>
-  <% end %>
-
-
   <form action="/products" method="post">
     <label>Product Name: </label>
-    <input type="text" name="user[product][name]">
+    <input type="text" name="product[name]">
     <br><br>
 
     <label>Product Category: </label>
-    <input type="text" name="user[product][category]">
+    <input type="text" name="product[category]">
     <br><br>
 
     <label>Countries Of Use: </label>
-    <input type="text" name="user[product][countries_of_use]">
+    <input type="text" name="product[countries_of_use]">
     <br><br>
 
     <label>Active Ingredients: </label>
-    <input type="text" name="user[product][active_ingredients]">
+    <input type="text" name="product[active_ingredients]">
     <br><br>
 
     <label>Product Application: </label>
-    <input type="text" name="user[product][product_application]">
+    <input type="text" name="product[product_application]">
     <br><br>
 
     <% @companies.each do |company| %>
       <label><%= company.name %></label>
-      <input type="radio" name="user[product][company_id][]" value="<%= company.id %>">
+      <input type="radio" name="product[company_id]" value="<%= company.id %>">
     <% end %>
     <br><br>
 
     <label>Create Company: </label>
-    <input type="text" name="user[company_name]">
+    <input type="text" name="company[company_name]">
     <br><br>
 
     <input type="submit" value="Create Product">
   </form>
   <a href="/" class="buttons">Home</a>
-</div>
