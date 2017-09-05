@@ -2,6 +2,10 @@
 <% if !Helpers.is_logged_in?(session) %>
 <div class="bgcolor">
 
+  <% if flash.has?(:message) %>
+    <p><%= flash[:message] %></p>
+  <% end %>
+
 <form action="/login" method="post">
   <label>Please Enter Your Username: </label>
   <input type="text" name="user[username]">

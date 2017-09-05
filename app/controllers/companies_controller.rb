@@ -12,7 +12,8 @@ class CompaniesController < ApplicationController
 
     @user = User.find_by(id: session[:id])
     #checking user's companies to see if company that user is trying to create already exists.
-    @company = @user.companies.find_by(name: params[:user][:company][:name], user_id: @user.id)
+    @company = @user.companies.find_by(name: params[:user][:company][:name])
+
     if !@company.nil?
       # Rendering an error message if company already exist.
       flash[:message] = "Company Already Exists"

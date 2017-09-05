@@ -21,12 +21,15 @@ class UsersController < ApplicationController
   post '/login' do
 
     @user = User.find_by(username: params[:user][:username], email: params[:user][:email])
+
     if @user
       session[:id] = @user.id
       session[:username] = @user.username
       session[:email] = @user.email
       session[:password] = @user.password
       redirect to '/companies'
+    #else
+      #flash[:message] = "Please enter valid email, username and password"
     end
 
   end
