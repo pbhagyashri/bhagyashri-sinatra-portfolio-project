@@ -61,7 +61,7 @@ class CompaniesController < ApplicationController
   end
 
   patch '/companies/:slug' do
-    if is_logged_in?
+    if is_logged_in? && current_user
       @company = current_user.companies.find_by_slug(params[:slug])
       @company.name = params[:company][:name]
       @company.save
