@@ -65,7 +65,7 @@ class ProductsController < ApplicationController
   end
 
   delete '/products/:slug/delete' do
-    if is_logged_in?
+    if is_logged_in? && current_user
       @product = current_user.products.find_by_slug(params[:slug])
       @product.destroy
       redirect to "/products"
@@ -83,7 +83,7 @@ class ProductsController < ApplicationController
 
   patch '/products/:slug' do
 
-    if is_logged_in?
+    if is_logged_in? && current_user
       @product = current_user.products.find_by_slug(params[:slug])
       @product.name = params[:product][:name]
       @product.category = params[:product][:category]
