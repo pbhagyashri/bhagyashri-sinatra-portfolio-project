@@ -19,7 +19,7 @@
   <input type="text" name="product[product_application]">
   <br><br>
 
-  <% @companies.each do |company| %>
+  <% current_user.companies.each do |company| %>
     <label><%= company.name %></label>
     <input type="radio" name="product[company_id]" value="<%= company.id %>">
   <% end %>

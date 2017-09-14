@@ -1,5 +1,5 @@
 <ul>
-  <% @products.all.each do |product| %>
+  <% current_user.products.all.each do |product| %>
     <% if current_user.companies.any?{|comp| comp.products.include?(product)}%>
       <p class="product_name"><%= product.name %></p><a href="/products/<%= product.slug %>/edit">Edit</a>
       <li class="product_list"><span>Category:</span> <%= product.category %></li>

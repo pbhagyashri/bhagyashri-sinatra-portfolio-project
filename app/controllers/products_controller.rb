@@ -2,7 +2,6 @@ class ProductsController < ApplicationController
 
   get '/products' do
     if is_logged_in?
-      @products = current_user.products
       erb :'/products/products'
     else
       redirect to '/login'
@@ -11,7 +10,6 @@ class ProductsController < ApplicationController
 
   get '/products/new' do
     if is_logged_in?
-      @companies = current_user.companies
       erb :'/products/new'
     else
       redirect to '/login'
@@ -28,8 +26,6 @@ class ProductsController < ApplicationController
       else
         # if product doesn't already exists, creates a new products
         @product = current_user.products.build(params[:product])
-        #Finding user's companies to render radio buttons in new form.
-        @companies = current_user.companies
 
         if params[:company][:company_name].empty?
           @company = current_user.companies.find_by(id: params[:product][:company_id])
